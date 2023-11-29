@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14
+    ports:
+      - "15432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  mysite:
+    image: mysite:latest
+    container_name: mysite
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
